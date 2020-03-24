@@ -11,9 +11,9 @@ import Foundation
 struct ServiceClient {
 
     static let sharedInstance = ServiceClient()
+    private static let maximumPageSize: UInt = 100
 
-
-    public func fetchData(urlString: String, completion: @escaping (QuestionResponse, ServiceError?) -> ()) {
+    public func fetchData(urlString: String, pageIndex: UInt, pageSize: UInt, completion: @escaping (QuestionResponse, ServiceError?) -> ()) {
         //let maxPageSize = ServiceClient.maximumPageSize
     
         let url = URL(string: urlString)

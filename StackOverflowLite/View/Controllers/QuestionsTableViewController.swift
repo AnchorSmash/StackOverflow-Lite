@@ -15,7 +15,8 @@ class QuestionsTableViewController: UITableViewController {
      var questionTask: URLSessionDataTask!
      var errorHandling = ErrorHandling()
      var detailsVC: QuestionDetialViewControler?
-     
+     var pageIndex: UInt = 0
+     let pageSize: UInt = 100
     
      
      
@@ -27,19 +28,19 @@ class QuestionsTableViewController: UITableViewController {
 
      override func viewDidLoad() {
         super.viewDidLoad()
-        loadQuestions()
+        loadQuestions(pageIndex: pageIndex, pageSize: pageSize)
         
      
         
      }
      
      
-    @objc private func loadQuestions() {
+    @objc private func loadQuestions(pageIndex: UInt, pageSize: UInt) {
          questionTask?.cancel()
          
          
          
-         ServiceClient.sharedInstance.fetchData(urlString: questionListApi) { [weak self]
+         ServiceClient.sharedInstance.fetchData(urlString: questionListApi, pageIndex: pageIndex, pageSize: pageSize) { [weak self]
              (questionResponse: QuestionResponse?, error: ServiceError?) in
              guard let controller = self else { return }
              
@@ -72,7 +73,7 @@ class QuestionsTableViewController: UITableViewController {
 
          if (indexPath.row == self.questionViewModel.count - 1) {
              
-             self.loadQuestions()
+            self.loadQuestions(pageIndex: pageIndex, pageSize: pageSize)
          }
          
          return cell

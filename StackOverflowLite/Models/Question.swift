@@ -14,6 +14,7 @@ struct Item: Codable {
     let isAnswered: Bool?
     let viewCount, answerCount, score, lastActivityDate, creationDate, questionID: Int?
     let link,title: String?
+    let bodyMarkdown: String?
     
     enum CodingKeys: String, CodingKey {
         case tags
@@ -26,6 +27,7 @@ struct Item: Codable {
         case creationDate = "creation_date"
         case questionID = "question_id"
         case link, title
+        case bodyMarkdown = "body_markdown"
     }
     
     
@@ -54,7 +56,7 @@ struct QuestionResponse: Codable {
     let items: [Item]
     
     enum CodingKeys: String, CodingKey {
-        case items = "items"
+        case items 
     }
 }
 

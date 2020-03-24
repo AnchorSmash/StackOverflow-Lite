@@ -63,6 +63,6 @@ struct AnswerResponse: Codable {
     let items: [AnswerItem]
  
     enum CodingKeys: String, CodingKey {
-        case items = "items"
+        case items 
     }
 }

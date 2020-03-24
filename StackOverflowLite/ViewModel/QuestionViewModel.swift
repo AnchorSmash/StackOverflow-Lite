@@ -14,6 +14,7 @@ struct QuestionViewModel {
     var displayName: String?
     var profileImage: String?
     var tags: [String]
+    var answerBodyMarkdown: String?
    
     
     init(question: Item) {
@@ -21,7 +22,7 @@ struct QuestionViewModel {
         displayName = question.owner.displayName
         profileImage = question.owner.profileImage
         tags = question.tags
-       
+        answerBodyMarkdown = question.bodyMarkdown
     }
     
 }

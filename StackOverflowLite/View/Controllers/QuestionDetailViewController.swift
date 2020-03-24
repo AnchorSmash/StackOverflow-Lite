@@ -23,6 +23,7 @@ class QuestionDetialViewControler: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var questionDetailDisplayNameLabel: UILabel!
     @IBOutlet weak var questionDetailTitleLabel: UILabel!
     @IBOutlet weak var questionDetailTagsLabel: UILabel!
+    @IBOutlet weak var questionDetailTextView: UITextView!
     
     var answerViewModel: [AnswerViewModel] = [] {
             didSet {
@@ -51,6 +52,7 @@ class QuestionDetialViewControler: UIViewController, UITableViewDelegate, UITabl
                 questionDetailTitleLabel.text = questionModel?.title
                 questionDetailDisplayNameLabel.text = questionModel?.displayName
                 questionDetailTagsLabel.text = questionModel?.tags.joined()
+                questionDetailTextView.text = questionModel?.answerBodyMarkdown
                 if let profileImage = questionModel?.profileImage {
                     questionDetailProfileImage.loadImage(urlString: profileImage)
                 } else {
